@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>철산장 鐵山莊 — 50명에서 끝납니다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #14100c;
+  --ink-soft: #2a221b;
+  --paper: #f3ebdb;
+  --paper-deep: #e8ddc6;
+  --paper-warm: #ede2cb;
+  --brown: #3d2818;
+  --brown-mid: #5c3a22;
+  --gold: #a8854a;
+  --gold-deep: #8a6a32;
+  --red-seal: #a02020;
+  --line: rgba(20,16,12,0.18);
+  --line-soft: rgba(20,16,12,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Serif KR', serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 30%, rgba(168,133,74,0.04) 0, transparent 50%),
+    radial-gradient(circle at 75% 70%, rgba(61,40,24,0.04) 0, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0 0.04 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: multiply;
+}
+
+main, header, footer, section { position: relative; z-index: 3; }
+
+.eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--gold-deep);
+}
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.wrap-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(243,235,219,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.site-header .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.brand {
+  display: flex; align-items: baseline; gap: 10px;
+  text-decoration: none; color: var(--ink);
+}
+.brand-hangul { font-weight: 700; font-size: 1.15rem; letter-spacing: 0.05em; }
+.brand-hanja { font-weight: 300; font-size: 0.95rem; color: var(--gold-deep); letter-spacing: 0.1em; }
+
+.header-cta { display: flex; align-items: center; gap: 18px; font-size: 0.85rem; }
+.header-cta .phone { color: var(--brown); text-decoration: none; letter-spacing: 0.05em; font-weight: 500; }
+.header-cta .header-btn {
+  background: var(--ink); color: var(--paper);
+  padding: 9px 18px; text-decoration: none;
+  font-size: 0.82rem; letter-spacing: 0.08em;
+  border: 1px solid var(--ink); transition: all 0.3s;
+}
+.header-cta .header-btn:hover { background: var(--paper); color: var(--ink); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  padding: 130px 0 90px;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+
+.hero::before {
+  content: '鐵山莊';
+  position: absolute;
+  right: -40px; bottom: -60px;
+  font-size: clamp(14rem, 28vw, 28rem);
+  font-weight: 900;
+  color: var(--brown);
+  opacity: 0.05;
+  line-height: 0.9;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 70px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
+.hero-eyebrow .line { width: 50px; height: 1px; background: var(--gold-deep); }
+
+.hero h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+  font-weight: 700; line-height: 1.18;
+  letter-spacing: -0.025em;
+  margin-bottom: 36px; color: var(--ink);
+}
+
+.hero h1 .accent {
+  color: var(--brown);
+  font-style: italic;
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  font-weight: 500;
+}
+
+.hero-lede {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  margin-bottom: 48px;
+}
+.hero-lede strong { color: var(--brown); font-weight: 700; }
+
+.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 60px; }
+
+.btn-primary, .btn-secondary {
+  padding: 18px 32px;
+  text-decoration: none;
+  font-size: 0.92rem; letter-spacing: 0.08em;
+  font-weight: 500; transition: all 0.3s;
+  display: inline-block;
+}
+.btn-primary { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+.btn-primary:hover { background: var(--brown); border-color: var(--brown); }
+.btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.btn-secondary:hover { background: var(--ink); color: var(--paper); }
+
+.hero-image {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--ink);
+}
+.hero-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(20,16,12,0.4) 100%);
+  pointer-events: none;
+}
+.hero-image .badge {
+  position: absolute;
+  bottom: 24px; left: 24px;
+  z-index: 2;
+  color: var(--paper);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+  grid-column: 1 / -1;
+}
+
+.hero-stat { padding: 0 18px; border-right: 1px solid var(--line-soft); }
+.hero-stat:first-child { padding-left: 0; }
+.hero-stat:last-child { border-right: none; padding-right: 0; }
+
+.hero-stat .label {
+  font-size: 0.72rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold-deep);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; margin-bottom: 8px;
+}
+.hero-stat .value {
+  font-size: 1.55rem; font-weight: 700;
+  color: var(--ink); letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.hero-stat .sub { font-size: 0.78rem; color: var(--ink-soft); margin-top: 4px; opacity: 0.7; }
+
+/* Section base */
+section.block { padding: 130px 0; position: relative; }
+section.block.dark { background: var(--ink); color: var(--paper); }
+section.block.dark .eyebrow { color: var(--gold); }
+
+.section-head { margin-bottom: 80px; }
+.section-head .eyebrow {
+  display: inline-flex; align-items: center; gap: 14px;
+  margin-bottom: 24px;
+}
+.section-head .eyebrow::before {
+  content: ''; display: inline-block;
+  width: 30px; height: 1px; background: currentColor;
+}
+.section-head h2 {
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 700; line-height: 1.25;
+  letter-spacing: -0.02em; max-width: 880px;
+}
+.section-head h2 .accent {
+  color: var(--brown); font-style: italic;
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  font-weight: 500;
+}
+.dark .section-head h2 .accent { color: var(--gold); }
+
+/* Philosophy */
+.philo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.philo-text p {
+  font-size: 1.08rem; line-height: 2;
+  margin-bottom: 24px; color: var(--ink-soft);
+}
+.philo-text p:last-child { margin-bottom: 0; }
+.philo-text .lead {
+  font-size: 1.35rem; color: var(--ink);
+  font-weight: 500; line-height: 1.6; margin-bottom: 32px;
+}
+.philo-quote {
+  border-left: 3px solid var(--gold);
+  padding-left: 28px;
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  font-style: italic;
+  font-size: 1.4rem; line-height: 1.6;
+  color: var(--brown);
+  font-weight: 500; margin-top: 32px;
+}
+.philo-image {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--ink);
+}
+.philo-image img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* Reasons */
+.reasons-intro {
+  font-size: 1.15rem; line-height: 1.95;
+  color: var(--ink-soft);
+  max-width: 720px; margin-bottom: 80px;
+}
+.reasons-intro strong { color: var(--ink); font-weight: 700; }
+
+.reason {
+  display: grid;
+  grid-template-columns: 70px 1fr 1.6fr 1fr;
+  gap: 40px;
+  padding: 56px 0;
+  border-top: 1px solid var(--line);
+  align-items: center;
+}
+.reason:last-child { border-bottom: 1px solid var(--line); }
+
+.reason-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; font-weight: 300;
+  color: var(--gold-deep);
+  font-style: italic; line-height: 1;
+}
+
+.reason-label .hanja-big {
+  font-size: 2.1rem; font-weight: 300;
+  color: var(--brown);
+  letter-spacing: 0.05em;
+  margin-bottom: 6px; line-height: 1;
+}
+.reason-label .latin {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.82rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold-deep);
+}
+
+.reason-body h3 {
+  font-size: 1.5rem; font-weight: 700;
+  line-height: 1.4; margin-bottom: 16px;
+  color: var(--ink); letter-spacing: -0.015em;
+}
+.reason-body p { font-size: 0.98rem; line-height: 1.85; color: var(--ink-soft); }
+
+.reason-image {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.reason-image img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* Space gallery */
+.space-block { background: var(--paper-warm); }
+
+.space-intro {
+  font-size: 1.15rem; line-height: 1.95;
+  color: var(--ink-soft);
+  max-width: 720px; margin-bottom: 60px;
+}
+
+.space-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  height: 680px;
+  margin-bottom: 60px;
+}
+
+.space-gallery .gallery-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+.space-gallery .gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.6s ease;
+}
+.space-gallery .gallery-item:hover img { transform: scale(1.04); }
+
+.space-gallery .gallery-item:nth-child(1) {
+  grid-row: 1 / 3;
+}
+.space-gallery .gallery-item:nth-child(4) {
+  grid-column: 2 / 4;
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(20,16,12,0.7) 100%);
+  pointer-events: none;
+}
+
+.gallery-label {
+  position: absolute;
+  bottom: 20px; left: 20px;
+  z-index: 2;
+  color: var(--paper);
+}
+.gallery-label .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-bottom: 6px;
+  display: block;
+}
+.gallery-label .title-ko {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: block;
+}
+.gallery-label .title-hanja {
+  font-size: 0.82rem;
+  color: rgba(243,235,219,0.7);
+  letter-spacing: 0.1em;
+  font-weight: 300;
+}
+
+.space-review {
+  text-align: center;
+  padding: 48px 24px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.space-review .quote {
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  font-style: italic;
+  font-size: 1.55rem; line-height: 1.6;
+  color: var(--brown);
+  font-weight: 500; margin-bottom: 18px;
+}
+.space-review .source {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--gold-deep);
+}
+
+/* Signature */
+.signature-block {
+  background: var(--ink);
+  color: var(--paper);
+}
+.signature-block .section-head .eyebrow { color: var(--gold); }
+.signature-block .section-head h2 .accent { color: var(--gold); }
+
+.sig-intro {
+  font-size: 1.1rem;
+  line-height: 1.95;
+  color: rgba(243,235,219,0.78);
+  max-width: 680px;
+  margin-bottom: 70px;
+}
+
+.sig-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 24px;
+}
+
+.sig-card {
+  display: flex; flex-direction: column;
+  background: rgba(243,235,219,0.03);
+  border: 1px solid rgba(168,133,74,0.2);
+}
+.sig-card-image {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--ink-soft);
+}
+.sig-card-image img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+.sig-card-body { padding: 32px 28px 36px; }
+.sig-card .badge {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.sig-card h3 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.sig-card h3 .hanja {
+  display: block;
+  font-size: 0.65em;
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+.sig-card p {
+  margin-top: 18px;
+  font-size: 0.96rem;
+  line-height: 1.85;
+  color: rgba(243,235,219,0.7);
+}
+
+/* Proof */
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.proof-text p {
+  font-size: 1.1rem; line-height: 2;
+  color: rgba(243,235,219,0.85);
+  margin-bottom: 22px;
+}
+.proof-text p:last-child { margin-bottom: 0; }
+.proof-text strong { color: var(--gold); font-weight: 700; }
+
+.proof-stat {
+  text-align: center;
+  border: 1px solid rgba(168,133,74,0.3);
+  padding: 60px 40px;
+  position: relative;
+}
+.proof-stat::before, .proof-stat::after {
+  content: '';
+  position: absolute;
+  width: 12px; height: 12px;
+  border: 1px solid var(--gold);
+}
+.proof-stat::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.proof-stat::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.proof-stat .label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 24px;
+}
+.proof-stat .value {
+  font-size: clamp(3.2rem, 7vw, 5.5rem);
+  font-weight: 700; color: var(--paper);
+  letter-spacing: -0.03em; line-height: 1;
+  margin-bottom: 18px;
+}
+.proof-stat .value .unit {
+  font-size: 0.5em; font-weight: 400;
+  color: var(--gold); margin-left: 8px;
+}
+.proof-stat .sub {
+  font-size: 0.85rem;
+  color: rgba(243,235,219,0.6);
+  letter-spacing: 0.1em;
+}
+
+/* Limit */
+.limit-block {
+  text-align: center;
+  padding: 120px 0;
+  background: var(--ink);
+  color: var(--paper);
+  position: relative; overflow: hidden;
+}
+
+.limit-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('./brick-sign.jpg') center/cover;
+  opacity: 0.18;
+  filter: grayscale(50%);
+}
+.limit-block::after {
+  content: '伍拾';
+  position: absolute;
+  inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: clamp(20rem, 50vw, 45rem);
+  color: var(--brown-mid);
+  opacity: 0.12;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+}
+
+.limit-block .inner {
+  position: relative; z-index: 2;
+  max-width: 760px; margin: 0 auto;
+  padding: 0 24px;
+}
+
+.limit-block .eyebrow { color: var(--gold); margin-bottom: 28px; }
+
+.limit-block h2 {
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25; margin-bottom: 32px;
+}
+.limit-block h2 em {
+  font-style: italic;
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  font-weight: 500;
+}
+
+.limit-block .body {
+  font-size: 1.1rem; line-height: 1.95;
+  color: rgba(243,235,219,0.9);
+  margin-bottom: 48px;
+}
+
+.limit-counter {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid rgba(168,133,74,0.4);
+  padding: 28px 56px;
+  background: rgba(20,16,12,0.6);
+  backdrop-filter: blur(8px);
+}
+.limit-counter .label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  letter-spacing: 0.2em;
+  font-size: 0.82rem;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.limit-counter .count {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--paper);
+  letter-spacing: -0.02em;
+  font-family: 'Cormorant Garamond', serif;
+}
+.limit-counter .count .total { color: rgba(243,235,219,0.4); font-weight: 300; }
+
+/* Qualification */
+.qual-intro {
+  font-size: 1.15rem; line-height: 1.95;
+  color: var(--ink-soft);
+  max-width: 700px; margin-bottom: 80px;
+}
+
+.qual-item {
+  padding: 48px 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.qual-item:last-child { border-bottom: 1px solid var(--line); }
+
+.qual-num {
+  font-size: 3.2rem; font-weight: 300;
+  color: var(--brown); line-height: 0.9;
+}
+
+.qual-body h3 {
+  font-size: 1.5rem; font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.015em; color: var(--ink);
+}
+.qual-body h3::after {
+  content: ''; display: block;
+  width: 32px; height: 2px;
+  background: var(--brown);
+  margin-top: 14px;
+}
+.qual-body p { font-size: 1rem; line-height: 1.95; color: var(--ink-soft); }
+
+/* Ops */
+.ops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--line);
+}
+.ops-item {
+  padding: 56px 40px 56px 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.ops-item:nth-child(2n) {
+  padding-left: 40px;
+  padding-right: 0;
+  border-right: none;
+}
+
+.ops-num {
+  font-size: 2rem; font-weight: 300;
+  color: var(--brown);
+  margin-bottom: 22px;
+  display: flex; align-items: baseline; gap: 12px;
+}
+.ops-num .latin {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.55em;
+  color: var(--gold-deep);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.ops-item h3 {
+  font-size: 1.35rem; font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.015em;
+}
+.ops-item p { font-size: 0.96rem; line-height: 1.9; color: var(--ink-soft); }
+
+/* Story */
+.story-block { background: var(--paper-deep); }
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.story-text p {
+  font-size: 1.08rem;
+  line-height: 2;
+  margin-bottom: 22px;
+  color: var(--ink-soft);
+}
+.story-text .lead {
+  font-size: 1.3rem;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.story-quote {
+  border-left: 3px solid var(--gold);
+  padding: 8px 0 8px 24px;
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  font-style: italic;
+  font-size: 1.35rem; line-height: 1.65;
+  color: var(--brown);
+  margin: 32px 0;
+  font-weight: 500;
+}
+
+.story-sign {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.story-sign .name {
+  font-size: 1.4rem; font-weight: 700;
+  letter-spacing: -0.01em; margin-bottom: 4px;
+}
+.story-sign .title {
+  font-size: 0.9rem;
+  color: var(--brown);
+  letter-spacing: 0.05em;
+}
+
+.story-image {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--paper);
+}
+.story-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Inquiry */
+.inquiry-block {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 130px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.inquiry-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('./hero-night.jpg') center/cover;
+  opacity: 0.15;
+  filter: grayscale(30%);
+}
+
+.inquiry-block .wrap { position: relative; z-index: 2; }
+
+.inquiry-block .section-head { text-align: center; margin-bottom: 60px; }
+.inquiry-block .section-head h2 { margin: 0 auto; }
+.inquiry-block .section-head .eyebrow { color: var(--gold); justify-content: center; }
+.inquiry-block .section-head h2 .accent { color: var(--gold); }
+
+.inquiry-intro {
+  text-align: center;
+  font-size: 1.1rem;
+  color: rgba(243,235,219,0.85);
+  line-height: 1.9;
+  max-width: 620px;
+  margin: 0 auto 64px;
+}
+
+.form-card {
+  max-width: 760px;
+  margin: 0 auto;
+  background: rgba(20,16,12,0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(168,133,74,0.3);
+  padding: 56px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.form-field { display: flex; flex-direction: column; }
+.form-field.full { grid-column: 1 / -1; }
+
+.form-field label {
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(243,235,219,0.3);
+  color: var(--paper);
+  padding: 12px 0;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-bottom-color: var(--gold);
+}
+
+.form-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23a8854a' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 28px;
+}
+.form-field select option { background: var(--ink); color: var(--paper); }
+
+.form-field textarea { min-height: 90px; resize: vertical; }
+
+.consent {
+  display: flex; align-items: center; gap: 10px;
+  margin: 24px 0 32px;
+  font-size: 0.88rem;
+  color: rgba(243,235,219,0.78);
+}
+.consent input { width: 14px; height: 14px; accent-color: var(--gold); }
+
+.submit-btn {
+  width: 100%;
+  background: var(--gold);
+  color: var(--ink);
+  border: 1px solid var(--gold);
+  padding: 20px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem; font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.submit-btn:hover { background: transparent; color: var(--gold); }
+
+.inquiry-direct {
+  text-align: center;
+  margin-top: 36px;
+  color: rgba(243,235,219,0.7);
+  font-size: 0.92rem;
+}
+.inquiry-direct .phone {
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  margin-left: 8px;
+}
+
+/* Footer */
+footer {
+  background: var(--ink);
+  color: rgba(243,235,219,0.6);
+  padding: 80px 0 40px;
+  border-top: 1px solid rgba(168,133,74,0.15);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 56px;
+}
+
+.footer-brand .name {
+  font-size: 1.8rem; font-weight: 700;
+  color: var(--paper); margin-bottom: 6px;
+}
+.footer-brand .hanja-name {
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 24px;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+}
+.footer-brand .desc {
+  font-size: 0.95rem; line-height: 1.8;
+  color: rgba(243,235,219,0.6);
+}
+
+.footer-col h5 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+.footer-col p {
+  font-size: 0.92rem;
+  line-height: 1.95;
+  color: rgba(243,235,219,0.6);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(243,235,219,0.1);
+  padding-top: 32px;
+  display: flex; justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: rgba(243,235,219,0.4);
+}
+.footer-bottom .seal {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  letter-spacing: 0.3em;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 { animation: fadeUp 1s ease-out 0.1s both; }
+.hero-lede { animation: fadeUp 1s ease-out 0.3s both; }
+.hero-cta { animation: fadeUp 1s ease-out 0.45s both; }
+.hero-stats { animation: fadeUp 1s ease-out 0.6s both; }
+.hero-eyebrow { animation: fadeUp 1s ease-out 0s both; }
+.hero-image { animation: fadeUp 1.2s ease-out 0.2s both; }
+
+/* Mobile */
+@media (max-width: 880px) {
+  .header-cta .phone { display: none; }
+  .site-header .wrap { height: 60px; }
+  .hero { padding: 110px 0 70px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero h1 { font-size: 2.3rem; }
+  .hero-lede { font-size: 1rem; }
+  .hero-image { aspect-ratio: 16/10; }
+
+  .hero-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding-top: 24px;
+  }
+  .hero-stat {
+    padding: 12px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .hero-stat:nth-last-child(-n+2) { border-bottom: none; }
+
+  section.block { padding: 80px 0; }
+  .section-head { margin-bottom: 50px; }
+  .section-head h2 { font-size: 1.85rem; }
+
+  .philo-grid, .proof-grid, .story-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .reason {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 40px 0;
+  }
+  .reason-num { font-size: 1.8rem; }
+  .reason-body h3 { font-size: 1.3rem; }
+  .reason-image { aspect-ratio: 16/10; }
+
+  .qual-item {
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    padding: 36px 0;
+  }
+  .qual-num { font-size: 2.2rem; }
+  .qual-body h3 { font-size: 1.2rem; }
+
+  .ops-grid { grid-template-columns: 1fr; }
+  .ops-item {
+    padding: 40px 0 !important;
+    border-right: none !important;
+  }
+
+  .space-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 240px);
+    height: auto;
+  }
+  .space-gallery .gallery-item:nth-child(1),
+  .space-gallery .gallery-item:nth-child(4) {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .sig-grid { grid-template-columns: 1fr; gap: 20px; }
+
+  .proof-stat { padding: 40px 24px; }
+  .proof-stat .value { font-size: 3rem; }
+
+  .limit-block { padding: 80px 0; }
+  .limit-block h2 { font-size: 2rem; }
+  .limit-counter { padding: 20px 32px; }
+  .limit-counter .count { font-size: 2.2rem; }
+
+  .form-card { padding: 32px 24px; }
+  .form-row { grid-template-columns: 1fr; gap: 22px; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="#" class="brand">
+      <span class="brand-hangul">철산장</span>
+      <span class="brand-hanja">鐵山莊</span>
+    </a>
+    <div class="header-cta">
+      <a href="tel:0200000000" class="phone">02-0000-0000</a>
+      <a href="#inquiry" class="header-btn">가맹 신청 →</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="line"></span>
+          <span class="eyebrow">CHEOLSANJANG · MULLAE-DONG SEOUL</span>
+        </div>
+
+        <h1>
+          비싼 음식입니다.<br>
+          손이 많이 갑니다.<br>
+          <span class="accent">그래도 합니다.</span>
+        </h1>
+
+        <p class="hero-lede">
+          문래동입니다. 강남이 아닙니다.<br>
+          월 매출 <strong>1.8억</strong>. 입지가 만든 매출이 아닙니다.<br>
+          이정혁 대표가 직접 증명한 음식과 운영입니다.<br>
+          이 구조를, 전국 <strong>50명</strong>에게만 옮깁니다.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#inquiry" class="btn-primary">가맹 자격 확인 →</a>
+          <a href="#brand" class="btn-secondary">브랜드 더 보기</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="./hero-night.jpg" alt="철산장 문래동 본점 야경">
+        <span class="badge">鐵山莊 · MULLAE-DONG</span>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="label">Limit</div>
+          <div class="value">50<span style="font-size:0.6em;font-weight:400;margin-left:4px;">명</span></div>
+          <div class="sub">전국 한정</div>
+        </div>
+        <div class="hero-stat">
+          <div class="label">Revenue</div>
+          <div class="value">1.8<span style="font-size:0.6em;font-weight:400;margin-left:4px;">억/월</span></div>
+          <div class="sub">2026 직영 1호점</div>
+        </div>
+        <div class="hero-stat">
+          <div class="label">Rating</div>
+          <div class="value">★ 4.9</div>
+          <div class="sub">Google 135개 리뷰</div>
+        </div>
+        <div class="hero-stat">
+          <div class="label">Status</div>
+          <div class="value">0 / 50</div>
+          <div class="sub">선착순 마감</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="block" id="brand">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">壹 · PHILOSOPHY</div>
+      <h2>빨리 만드는 한식은 <span class="accent">한식이 아닙니다.</span></h2>
+    </div>
+
+    <div class="philo-grid">
+      <div class="philo-text">
+        <p class="lead">
+          매일 매장에서 면을 뽑습니다.<br>
+          매일 매장에서 만두를 빚습니다.<br>
+          숯불은 한 번 켜면 다시 끄지 않습니다.
+        </p>
+        <p>
+          한식은 본래 손이 가는 음식입니다. 손을 줄이면 가격은 내려가지만 음식은 사라집니다. 우리는 손을 줄이지 않습니다. 줄이려는 분은 받지 않습니다.
+        </p>
+        <p>
+          무제한 가맹이 아닙니다. 50명에서 끝납니다. 함께 오래 갈 50개의 자리를 짓습니다.
+        </p>
+        <div class="philo-quote">
+          "한식은 시간이 빚는 음식입니다.<br>
+          시간을 줄이면, 한식이 아닙니다."
+        </div>
+      </div>
+      <div class="philo-image">
+        <img src="./noodle-machine.jpg" alt="매일 매장에서 뽑는 자가제면">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REASONS -->
+<section class="block" style="background:var(--paper-warm);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">貳 · WHY</div>
+      <h2>많이 늘리는 가맹이 아니라,<br><span class="accent">살아남는 가맹입니다.</span></h2>
+    </div>
+
+    <p class="reasons-intro">
+      가맹점 100개 중 <strong>70개가 적자</strong>인 시장입니다.<br>
+      우리는 다른 길을 갑니다. <strong>50명만 받습니다. 50명을 모두 살립니다.</strong>
+    </p>
+
+    <div>
+      <div class="reason">
+        <div class="reason-num">01</div>
+        <div class="reason-label">
+          <div class="hanja-big">壹</div>
+          <div class="latin">Identity</div>
+        </div>
+        <div class="reason-body">
+          <h3>공간을 만들지 않습니다.<br>공간을 살렸습니다.</h3>
+          <p>
+            노포 인테리어를 흉내 내지 않았습니다. 문래동 벽돌 창고를 그대로 살렸습니다. 손님이 일부러 찾아오는 이유는 이 공간입니다. 따라 만든 공간으로는 만들어지지 않는 매출이 있습니다.
+          </p>
+        </div>
+        <div class="reason-image">
+          <img src="./exterior-day.jpg" alt="문래동 철산장 외관">
+        </div>
+      </div>
+
+      <div class="reason">
+        <div class="reason-num">02</div>
+        <div class="reason-label">
+          <div class="hanja-big">貳</div>
+          <div class="latin">Craft</div>
+        </div>
+        <div class="reason-body">
+          <h3>매일 면을 뽑고,<br>매일 만두를 빚습니다.</h3>
+          <p>
+            대표가 직접 설계한 메뉴와 양념입니다. 가맹점도 같은 시스템을 받습니다. 같은 시스템 없이 같은 맛은 나오지 않습니다. 시스템 없는 가맹은 본사도 점주도 살아남지 못합니다.
+          </p>
+        </div>
+        <div class="reason-image">
+          <img src="./dumpling.jpg" alt="평양만두 손빚음">
+        </div>
+      </div>
+
+      <div class="reason">
+        <div class="reason-num">03</div>
+        <div class="reason-label">
+          <div class="hanja-big">參</div>
+          <div class="latin">Proof</div>
+        </div>
+        <div class="reason-body">
+          <h3>강남이 아닙니다.<br>월 1.8억입니다.</h3>
+          <p>
+            문래동 골목 안. 월 매출 1.8억. Google 평점 4.9점. 입지가 만든 매출이 아닙니다. 메뉴와 운영이 만든 매출입니다. 같은 시스템을 옮기면, 같은 결과가 나옵니다.
+          </p>
+        </div>
+        <div class="reason-image">
+          <img src="./hall.jpg" alt="철산장 본관 대청">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACE -->
+<section class="block space-block">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">參 · SPACE</div>
+      <h2>공간이 <span class="accent">환대를 만듭니다.</span></h2>
+    </div>
+
+    <p class="space-intro">
+      공간에 돈을 쓰지 않았습니다. 공간을 살리는 데 시간을 썼습니다.<br>
+      박공 천장. 깊은 갈색 좌식 테이블. 등불 같은 펜던트.<br>
+      한식의 격에 어울리는 공간을, 새로 짓지 않고 짓습니다.
+    </p>
+
+    <div class="space-gallery">
+      <div class="gallery-item">
+        <img src="./hall.jpg" alt="본관 대청">
+        <div class="gallery-label">
+          <span class="num">01</span>
+          <span class="title-ko">본관 대청</span>
+          <span class="title-hanja">大廳</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="./noodle-counter.jpg" alt="자가제면">
+        <div class="gallery-label">
+          <span class="num">02</span>
+          <span class="title-ko">자가제면</span>
+          <span class="title-hanja">自家製麵</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="./lavatory.jpg" alt="해우소">
+        <div class="gallery-label">
+          <span class="num">03</span>
+          <span class="title-ko">해우소</span>
+          <span class="title-hanja">解憂所</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="./map.jpg" alt="기성전도">
+        <div class="gallery-label">
+          <span class="num">04</span>
+          <span class="title-ko">기성전도</span>
+          <span class="title-hanja">箕城全圖 · History map of Pyongyang</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-review">
+      <div class="quote">"노포의 공간감과 정통의 깊이가<br>한 자리에서 만나는 식당."</div>
+      <div class="source">— GOOGLE REVIEWS · ★ 4.9 / 5.0</div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE -->
+<section class="block signature-block">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">肆 · SIGNATURE</div>
+      <h2>대표가 직접 짓고,<br><span class="accent">매일 매장에서 만듭니다.</span></h2>
+    </div>
+
+    <p class="sig-intro">
+      매일 손으로 빚는 평양만두. 매일 자가제면으로 뽑는 평양냉면. 숯불에 천천히 굽는 돼지갈비.<br>
+      모든 시그니처는 이정혁 대표가 직접 설계했습니다. 메뉴를 줄이지 않습니다. 늘리지도 않습니다.
+    </p>
+
+    <div class="sig-grid">
+      <div class="sig-card">
+        <div class="sig-card-image">
+          <img src="./food-spread.jpg" alt="철산장 한상">
+        </div>
+        <div class="sig-card-body">
+          <div class="badge">SIGNATURE 壹</div>
+          <h3>철산장 한상<span class="hanja">一床</span></h3>
+          <p>평양냉면, 평양만두, 돼지갈비, 수육, 빈대떡, 육회. 철산장의 시그니처 전부를 한 상에 올렸습니다. 회식·접대 자리에서 가장 많이 선택됩니다. 객단가가 가장 높은 메뉴입니다.</p>
+        </div>
+      </div>
+
+      <div class="sig-card">
+        <div class="sig-card-image">
+          <img src="./noodle-machine.jpg" alt="평양냉면 자가제면">
+        </div>
+        <div class="sig-card-body">
+          <div class="badge">SIGNATURE 貳</div>
+          <h3>평양냉면<span class="hanja">平壤冷麵</span></h3>
+          <p>매일 매장에서 자가제면으로 뽑습니다. 깊고 맑은 육수, 쫄깃한 메밀면. 평양냉면의 정통을 그대로 옮긴 한 그릇입니다.</p>
+        </div>
+      </div>
+
+      <div class="sig-card">
+        <div class="sig-card-image">
+          <img src="./dumpling.jpg" alt="평양만두 손빚음">
+        </div>
+        <div class="sig-card-body">
+          <div class="badge">SIGNATURE 參</div>
+          <h3>평양만두<span class="hanja">平壤饅頭</span></h3>
+          <p>매일 매장에서 손으로 빚습니다. 두부와 채소가 가득 들어간, 무겁지 않으면서 깊은 평양식 만두입니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="block dark">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">伍 · PROOF</div>
+      <h2>말이 아니라,<br><span class="accent">매출이 증명합니다.</span></h2>
+    </div>
+
+    <div class="proof-grid">
+      <div class="proof-text">
+        <p>
+          직영 1호점부터 검증한 모델만 가맹으로 풉니다. 검증되지 않은 모델은 가맹화하지 않습니다.
+        </p>
+        <p>
+          신규 가맹점도 <strong>같은 메뉴, 같은 시스템, 같은 물류, 같은 브랜드</strong>를 받습니다. 본사가 1호점에서 만든 매출 구조가, 그대로 가맹점으로 이전됩니다.
+        </p>
+        <p>
+          그 결과, 우리는 가맹점도 <strong>월 1억 이상</strong>이 가능하다고 판단합니다. 가능성이 아니라 구조입니다.
+        </p>
+      </div>
+      <div class="proof-stat">
+        <div class="label">Flagship Monthly</div>
+        <div class="value">1.8<span class="unit">억원</span></div>
+        <div class="sub">2026 · MULLAE-DONG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIMIT -->
+<section class="limit-block">
+  <div class="inner">
+    <div class="eyebrow">陸 · LIMIT</div>
+    <h2>모집은 단 한 번.<br><em>50명에서 끝납니다.</em></h2>
+    <p class="body">
+      무제한 가맹은 하지 않습니다.<br>
+      한 도시당, 한 상권당 — 가맹점이 살아남을 자리에만 출점합니다.<br>
+      50명을 채우는 즉시, 가맹 모집은 영구히 종료됩니다.
+    </p>
+    <div class="limit-counter">
+      <div class="label">Current Status</div>
+      <div class="count">0<span class="total"> / 50</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUAL -->
+<section class="block">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="eyebrow">柒 · CRITERIA</div>
+      <h2>누구나 받지 <span class="accent">않습니다.</span></h2>
+    </div>
+
+    <p class="qual-intro">
+      서로의 시간을 아끼기 위해, 자격 기준을 먼저 공개합니다.<br>
+      네 가지 중 하나라도 맞지 않으면, 가맹 검토를 진행하지 않습니다.
+    </p>
+
+    <div>
+      <div class="qual-item">
+        <div class="qual-num">壹</div>
+        <div class="qual-body">
+          <h3>월 1억 안 나오는 자리는 안 받습니다.</h3>
+          <p>철산장의 손익 구조는 월 1억에서 시작합니다. 그 이하의 상권·평수는 본사가 먼저 거절합니다. 입지 분석은 본사가 직접 합니다. 점주가 잘못된 자리에 들어가는 일을 막는 것이 본사의 일입니다.</p>
+        </div>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">貳</div>
+        <div class="qual-body">
+          <h3>매장에 안 계실 분은 안 받습니다.</h3>
+          <p>위탁 운영은 받지 않습니다. 직원 뒤에 숨어 통장만 받겠다는 분은 안 맞습니다. 한식은 사람이 만듭니다. 점주가 매장에 있어야 합니다.</p>
+        </div>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">參</div>
+        <div class="qual-body">
+          <h3>가격을 임의로 낮추실 분은 안 받습니다.</h3>
+          <p>단가를 낮추는 가맹은 받지 않습니다. 메뉴를 추가하거나 변경하는 운영도 가맹 계약상 불가합니다. 브랜드 기준은 50명 모두에게 같게 적용됩니다.</p>
+        </div>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">肆</div>
+        <div class="qual-body">
+          <h3>5년 못 하실 분은 안 받습니다.</h3>
+          <p>단기 회수형 가맹이 아닙니다. 3년 안에 빠지겠다는 분은 받지 않습니다. 한식의 시간을 같이 갈 분에게만 권합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPS -->
+<section class="block" style="background:var(--paper-warm);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">捌 · SYSTEM</div>
+      <h2>매장은 점주가,<br><span class="accent">시스템은 본사가.</span></h2>
+    </div>
+
+    <p class="qual-intro">
+      한식 경력은 필요 없습니다.<br>
+      본사가 시스템 전부를 책임지기 때문입니다.
+    </p>
+
+    <div class="ops-grid">
+      <div class="ops-item">
+        <div class="ops-num">壹 <span class="latin">Sauce</span></div>
+        <h3>중앙주방 · 자체 소스</h3>
+        <p>핵심 양념과 소스는 자체 제조 시설에서 직접 만들어 공급합니다. 매장에서는 같은 맛을 빠르게 내는 일에만 집중하시면 됩니다.</p>
+      </div>
+      <div class="ops-item">
+        <div class="ops-num">貳 <span class="latin">Recipe</span></div>
+        <h3>레시피 · 운영 매뉴얼</h3>
+        <p>이정혁 대표가 설계한 레시피를 영상·문서·실습으로 전수합니다. 점주도 주방 인력도 같은 절차로 운영합니다.</p>
+      </div>
+      <div class="ops-item">
+        <div class="ops-num">參 <span class="latin">Site</span></div>
+        <h3>상권 분석 · 출점 검토</h3>
+        <p>본사가 직접 상권을 봅니다. 월 1억 안 나올 자리는 본사가 먼저 거절합니다. 잘못된 자리에 들어가지 않게 막는 것이 본사의 일입니다.</p>
+      </div>
+      <div class="ops-item">
+        <div class="ops-num">肆 <span class="latin">Brand</span></div>
+        <h3>브랜드 · 마케팅</h3>
+        <p>광고, 디지털 마케팅, 미디어 노출까지 본사가 통합 운영합니다. 가맹점은 매장 운영에만 집중하시면 됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="block story-block">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">玖 · STORY</div>
+      <h2>한식의 깊이를 <span class="accent">다시 짓다.</span></h2>
+    </div>
+
+    <div class="story-grid">
+      <div class="story-image">
+        <img src="./logo-graphic.jpg" alt="철산장 브랜드 그래픽">
+      </div>
+      <div class="story-text">
+        <p class="lead">철산장은 이정혁 대표가 만든 한식 브랜드입니다.</p>
+        <p>
+          문래동 골목 끝, 오래된 벽돌 창고. 그 자리에서 평양만두, 평양냉면, 돼지갈비 — 한식의 뿌리에 있는 음식들을 다시 짓기 시작했습니다.
+        </p>
+        <p>
+          빨리 만들지 않습니다. 손을 줄이지 않습니다. 시간이 빚는 음식은 시간을 들여야 하기 때문입니다.
+        </p>
+        <div class="story-quote">
+          "무리하게 늘리지 않습니다.<br>
+          함께 오래 갈 50개의 자리를 짓습니다."
+        </div>
+        <div class="story-sign">
+          <div class="name">이정혁</div>
+          <div class="title">철산장 창업주 · 대표</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INQUIRY -->
+<section class="inquiry-block" id="inquiry">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">拾 · APPLY</div>
+      <h2>들어오실 분만 <span class="accent">신청하십시오.</span></h2>
+    </div>
+
+    <p class="inquiry-intro">
+      본사 가맹팀이 직접 검토 후 연락드립니다.<br>
+      자격이 맞지 않으면, 솔직하게 말씀드립니다.<br>
+      서로의 시간을 아끼는 것이 가장 좋은 출발입니다.
+    </p>
+
+    <div class="form-card">
+      <div class="form-row">
+        <div class="form-field">
+          <label>이름</label>
+          <input type="text" placeholder="홍길동">
+        </div>
+        <div class="form-field">
+          <label>연락처</label>
+          <input type="tel" placeholder="010-0000-0000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>이메일</label>
+          <input type="email" placeholder="name@example.com">
+        </div>
+        <div class="form-field">
+          <label>희망 출점 지역</label>
+          <select>
+            <option>서울</option>
+            <option>경기</option>
+            <option>인천</option>
+            <option>부산</option>
+            <option>대구</option>
+            <option>광주</option>
+            <option>대전</option>
+            <option>울산</option>
+            <option>세종</option>
+            <option>강원</option>
+            <option>충북</option>
+            <option>충남</option>
+            <option>전북</option>
+            <option>전남</option>
+            <option>경북</option>
+            <option>경남</option>
+            <option>제주</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field full">
+          <label>메시지 · 운영 경험</label>
+          <textarea placeholder="외식업·자영업 경험, 예상 출점 시기 등을 자유롭게 적어주세요."></textarea>
+        </div>
+      </div>
+      <div class="consent">
+        <input type="checkbox" id="consent">
+        <label for="consent" style="color:rgba(243,235,219,0.85);font-family:'Noto Serif KR',serif;font-size:0.88rem;letter-spacing:0;text-transform:none;margin-bottom:0;">개인정보 수집·이용에 동의합니다.</label>
+      </div>
+      <button class="submit-btn">자격 검토 신청 →</button>
+    </div>
+
+    <p class="inquiry-direct">
+      직접 통화를 원하시면 <a href="tel:0200000000" class="phone">02-0000-0000</a>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="name">철산장</div>
+        <div class="hanja-name">鐵山莊</div>
+        <p class="desc">한식의 깊이를 다시 짓다.<br>Premium Korean dining since 2026.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Business</h5>
+        <p>(주)철산장<br>대표 이정혁<br>문래동 본점<br>서울 영등포구 경인로77가길 12</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p>가맹문의 02-0000-0000<br>contact@cheolsanjang.kr<br>평일 10:00 - 18:00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 (주)철산장. All rights reserved.</div>
+      <div class="seal">CHEOLSANJANG · 鐵山莊</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
