@@ -290,6 +290,128 @@ section.block.dark .eyebrow { color: var(--gold); }
   object-fit: cover; display: block;
 }
 
+/* Conservative Growth (보수적인 가맹사업) */
+.conservative-block {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.conservative-block::before {
+  content: '愼';
+  position: absolute;
+  right: -80px; top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(24rem, 50vw, 44rem);
+  color: var(--brown-mid);
+  opacity: 0.06;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+}
+
+.conservative-block .wrap { position: relative; z-index: 2; }
+
+.conservative-block .section-head .eyebrow { color: var(--gold); }
+.conservative-block .section-head h2 .accent { color: var(--gold); }
+
+.conservative-tagline {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.5;
+  color: var(--paper);
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  font-style: italic;
+  font-weight: 500;
+  max-width: 760px;
+  margin-bottom: 28px;
+  padding-left: 28px;
+  border-left: 3px solid var(--gold);
+}
+
+.conservative-tagline .gold { color: var(--gold); }
+
+.conservative-intro {
+  font-size: 1.08rem;
+  line-height: 1.95;
+  color: rgba(243,235,219,0.75);
+  max-width: 720px;
+  margin-bottom: 80px;
+  padding-left: 31px;
+}
+
+.commitments {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.commitment {
+  border: 1px solid rgba(168,133,74,0.25);
+  padding: 44px 36px 40px;
+  position: relative;
+  background: rgba(243,235,219,0.025);
+  transition: all 0.4s ease;
+}
+
+.commitment:hover {
+  border-color: var(--gold);
+  background: rgba(168,133,74,0.06);
+  transform: translateY(-4px);
+}
+
+.commitment-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.commitment-num .hanja {
+  display: inline-block;
+  font-family: 'Noto Serif KR', serif;
+  font-style: normal;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: 0;
+  margin-right: 14px;
+  vertical-align: middle;
+  transform: translateY(-2px);
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+}
+
+.commitment h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--paper);
+  letter-spacing: -0.015em;
+  margin-bottom: 16px;
+}
+
+.commitment p {
+  font-size: 0.96rem;
+  line-height: 1.9;
+  color: rgba(243,235,219,0.7);
+}
+
+.commitment p strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+
 /* Reasons */
 .reasons-intro {
   font-size: 1.15rem; line-height: 1.95;
@@ -1059,6 +1181,22 @@ footer {
   .form-card { padding: 32px 24px; }
   .form-row { grid-template-columns: 1fr; gap: 22px; }
 
+  .conservative-block { padding: 80px 0; }
+  .conservative-block::before { font-size: 18rem; right: -60px; }
+  .conservative-tagline {
+    font-size: 1.25rem;
+    padding-left: 18px;
+    margin-bottom: 22px;
+  }
+  .conservative-intro {
+    padding-left: 21px;
+    margin-bottom: 50px;
+    font-size: 1rem;
+  }
+  .commitments { grid-template-columns: 1fr; gap: 16px; }
+  .commitment { padding: 32px 24px 28px; }
+  .commitment h3 { font-size: 1.2rem; }
+
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
 }
@@ -1172,11 +1310,57 @@ footer {
   </div>
 </section>
 
+<!-- CONSERVATIVE GROWTH (보수적인 가맹사업) -->
+<section class="block conservative-block">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">貳 · CONSERVATIVE GROWTH</div>
+      <h2>보수적인 <span class="accent">가맹사업.</span></h2>
+    </div>
+
+    <p class="conservative-tagline">
+      "확장은 늦춰도 됩니다.<br>
+      <span class="gold">망하지 않는 구조</span>가 먼저입니다."
+    </p>
+
+    <p class="conservative-intro">
+      성장 속도는 본사의 욕심으로 결정되지 않습니다.<br>
+      가맹점이 살아남는 구조가 확인된 자리에서, 한 점씩 짓습니다.
+    </p>
+
+    <div class="commitments">
+      <div class="commitment">
+        <div class="commitment-num"><span class="hanja">壹</span>FIRST COMMITMENT</div>
+        <h3>무리하게 매장을 늘리지 않습니다.</h3>
+        <p>속도가 아니라 <strong>생존율</strong>이 우선입니다. 본사의 매출이 아니라, 점주의 손익이 KPI입니다. 늘려야 할 이유가 없으면, 늘리지 않습니다.</p>
+      </div>
+
+      <div class="commitment">
+        <div class="commitment-num"><span class="hanja">貳</span>SECOND COMMITMENT</div>
+        <h3>상권·입지·수요 구조를<br>충분히 검토한 뒤 오픈합니다.</h3>
+        <p>점심 회전·저녁 객단가·체류 수요 — 세 축이 모두 받쳐주는 자리에만 들어갑니다. <strong>본사 데이터·현장 점검</strong>을 통과하지 못한 입지는 가맹 검토를 진행하지 않습니다.</p>
+      </div>
+
+      <div class="commitment">
+        <div class="commitment-num"><span class="hanja">參</span>THIRD COMMITMENT</div>
+        <h3>가맹점 수보다<br>생존율과 수익 구조를 우선합니다.</h3>
+        <p>전국 100개를 1년에 깔고 70%가 적자인 시장입니다. 우리는 <strong>50명의 100% 생존</strong>을 목표로 합니다. 가맹점이 살아남아야 본사도 살아남습니다.</p>
+      </div>
+
+      <div class="commitment">
+        <div class="commitment-num"><span class="hanja">肆</span>FOURTH COMMITMENT</div>
+        <h3>빠른 확장보다<br>안정적인 운영을 선택합니다.</h3>
+        <p>한 매장이 단단히 살아남는 구조가, 곧 <strong>50개가 살아남는 구조</strong>입니다. 1호점의 검증을 끝낸 뒤에야 2호점을 엽니다. 검증 없는 확장은 본사도 점주도 무너뜨립니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- REASONS -->
 <section class="block" style="background:var(--paper-warm);">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">貳 · WHY</div>
+      <div class="eyebrow">參 · WHY</div>
       <h2>많이 늘리는 가맹이 아니라,<br><span class="accent">살아남는 가맹입니다.</span></h2>
     </div>
 
@@ -1244,7 +1428,7 @@ footer {
 <section class="block space-block">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">參 · SPACE</div>
+      <div class="eyebrow">肆 · SPACE</div>
       <h2>공간이 <span class="accent">환대를 만듭니다.</span></h2>
     </div>
 
@@ -1300,7 +1484,7 @@ footer {
 <section class="block signature-block">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">肆 · SIGNATURE</div>
+      <div class="eyebrow">伍 · SIGNATURE</div>
       <h2>대표가 직접 짓고,<br><span class="accent">매일 매장에서 만듭니다.</span></h2>
     </div>
 
@@ -1350,7 +1534,7 @@ footer {
 <section class="block dark">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">伍 · PROOF</div>
+      <div class="eyebrow">陸 · PROOF</div>
       <h2>말이 아니라,<br><span class="accent">매출이 증명합니다.</span></h2>
     </div>
 
@@ -1378,7 +1562,7 @@ footer {
 <!-- LIMIT -->
 <section class="limit-block">
   <div class="inner">
-    <div class="eyebrow">陸 · LIMIT</div>
+    <div class="eyebrow">柒 · LIMIT</div>
     <h2>모집은 단 한 번.<br><em>50명에서 끝납니다.</em></h2>
     <p class="body">
       무제한 가맹은 하지 않습니다.<br>
@@ -1396,7 +1580,7 @@ footer {
 <section class="block">
   <div class="wrap-narrow">
     <div class="section-head">
-      <div class="eyebrow">柒 · CRITERIA</div>
+      <div class="eyebrow">捌 · CRITERIA</div>
       <h2>누구나 받지 <span class="accent">않습니다.</span></h2>
     </div>
 
@@ -1442,7 +1626,7 @@ footer {
 <section class="block" style="background:var(--paper-warm);">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">捌 · SYSTEM</div>
+      <div class="eyebrow">玖 · SYSTEM</div>
       <h2>매장은 점주가,<br><span class="accent">시스템은 본사가.</span></h2>
     </div>
 
@@ -1480,7 +1664,7 @@ footer {
 <section class="block story-block">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">玖 · STORY</div>
+      <div class="eyebrow">拾 · STORY</div>
       <h2>한식의 깊이를 <span class="accent">다시 짓다.</span></h2>
     </div>
 
@@ -1513,7 +1697,7 @@ footer {
 <section class="inquiry-block" id="inquiry">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">拾 · APPLY</div>
+      <div class="eyebrow">拾壹 · APPLY</div>
       <h2>들어오실 분만 <span class="accent">신청하십시오.</span></h2>
     </div>
 
