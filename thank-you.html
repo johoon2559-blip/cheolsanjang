@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>가맹 신청 완료 — 철산장</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+<!-- Google Analytics 4 (컨버전 트리거 포함) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID', {
+    'page_title': '철산장 - 가맹 신청 완료',
+    'page_path': '/thank-you.html'
+  });
+  // Lead 컨버전 확정 발화
+  gtag('event', 'conversion', { 'send_to': 'GA_MEASUREMENT_ID' });
+  gtag('event', 'generate_lead_confirmed', { 'value': 1.0, 'currency': 'KRW' });
+</script>
+
+<!-- Meta Pixel (컨버전 확정) -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'META_PIXEL_ID');
+  fbq('track', 'PageView');
+  fbq('track', 'Lead');
+</script>
+
+<style>
+:root {
+  --ink: #14100c;
+  --paper: #f3ebdb;
+  --gold: #a8854a;
+  --brown: #3d2818;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Serif KR', serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+.container { max-width: 560px; }
+.mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--gold);
+  margin-bottom: 36px;
+}
+.mark::before, .mark::after {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin: 0 14px 4px;
+}
+h1 {
+  font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+h1 .accent {
+  color: var(--brown);
+  font-style: italic;
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  font-weight: 500;
+}
+.lede {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: rgba(20,16,12,0.75);
+  margin-bottom: 40px;
+}
+.lede strong { color: var(--ink); font-weight: 700; }
+.divider {
+  width: 50px;
+  height: 1px;
+  background: var(--brown);
+  margin: 0 auto 40px;
+}
+.next-steps {
+  background: rgba(168,133,74,0.08);
+  border: 1px solid rgba(168,133,74,0.25);
+  padding: 28px 24px;
+  text-align: left;
+  margin-bottom: 40px;
+}
+.next-steps .label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.next-steps ol {
+  list-style: none;
+  counter-reset: step;
+}
+.next-steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 12px;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: rgba(20,16,12,0.8);
+}
+.next-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--brown);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  color: var(--brown);
+}
+.next-steps li:last-child { margin-bottom: 0; }
+.back-link {
+  display: inline-block;
+  padding: 16px 32px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--ink);
+  transition: all 0.3s;
+}
+.back-link:hover { background: var(--brown); border-color: var(--brown); }
+@media (max-width: 600px) {
+  h1 { font-size: 1.8rem; }
+  .lede { font-size: 1rem; }
+  .next-steps { padding: 22px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="mark">CHEOLSANJANG · 鐵山莊</div>
+  <h1>신청이 <span class="accent">접수되었습니다.</span></h1>
+  <p class="lede">
+    철산장 가맹팀이 직접 검토 후<br>
+    <strong>영업일 기준 3일 이내</strong>에 연락드립니다.
+  </p>
+  <div class="divider"></div>
+  <div class="next-steps">
+    <div class="label">NEXT STEPS</div>
+    <ol>
+      <li>본사 검토 (자격 기준 4가지 확인)</li>
+      <li>예비 면담 — 본사 직접 통화</li>
+      <li>입지·수익 시뮬레이션 진행 (자격 통과 시)</li>
+      <li>가맹 계약 검토</li>
+    </ol>
+  </div>
+  <a href="/" class="back-link">처음으로 돌아가기 →</a>
+</div>
+</body>
+</html>

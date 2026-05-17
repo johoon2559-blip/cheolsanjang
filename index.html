@@ -1424,6 +1424,154 @@ footer {
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
 }
 </style>
+
+<!-- ====================== ANALYTICS & TRACKING ====================== -->
+<!--
+  설치 가이드:
+  1. GA4 측정 ID는 analytics.google.com 에서 발급 → 아래 GA_MEASUREMENT_ID 교체
+  2. Meta Pixel ID는 business.facebook.com → Events Manager → 아래 META_PIXEL_ID 교체
+  3. Clarity Project ID는 clarity.microsoft.com → 아래 CLARITY_PROJECT_ID 교체
+  4. 각 ID 발급 전에는 placeholder 상태로 두면 됩니다 (사이트는 정상 작동, 데이터만 안 잡힘)
+-->
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID', {
+    'page_title': '철산장 - 가맹 모집',
+    'page_path': window.location.pathname
+  });
+</script>
+
+<!-- Meta Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'META_PIXEL_ID');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "CLARITY_PROJECT_ID");
+</script>
+
+<!-- ====================== CUSTOM EVENT TRACKING ====================== -->
+<script>
+  // gtag wrapper — GA4 ID가 없어도 에러 안 남
+  function safeGtag() {
+    if (typeof gtag === 'function') {
+      gtag.apply(null, arguments);
+    }
+  }
+  function safeFbq() {
+    if (typeof fbq === 'function') {
+      fbq.apply(null, arguments);
+    }
+  }
+
+  // 1. CTA 클릭 트래킹 (헤더, 히어로)
+  function trackCTAClick(location) {
+    safeGtag('event', 'cta_click', { 'cta_location': location });
+    safeFbq('trackCustom', 'CTAClick', { location: location });
+  }
+
+  // 2. 전화번호 클릭
+  function trackPhoneClick(location) {
+    safeGtag('event', 'phone_click', { 'phone_location': location });
+    safeFbq('trackCustom', 'PhoneClick', { location: location });
+  }
+
+  // 3. 폼 입력 시작 (engagement signal)
+  var formStarted = false;
+  function trackFormStart() {
+    if (formStarted) return;
+    formStarted = true;
+    safeGtag('event', 'form_start', { 'form_name': 'franchise-inquiry' });
+    safeFbq('trackCustom', 'FormStart');
+  }
+
+  // 4. 폼 제출 (Lead conversion — 가장 중요!)
+  function trackLead(form) {
+    var region = form.querySelector('[name=region]');
+    var regionValue = region ? region.value : '';
+    safeGtag('event', 'generate_lead', {
+      'form_name': 'franchise-inquiry',
+      'region': regionValue,
+      'value': 1.0,
+      'currency': 'KRW'
+    });
+    safeFbq('track', 'Lead', { content_name: 'franchise-inquiry', region: regionValue });
+    // 폼 정상 제출은 막지 않음 (return true)
+    return true;
+  }
+
+  // 5. 스크롤 깊이 트래킹 (25/50/75/100%)
+  var scrollDepthHit = { 25: false, 50: false, 75: false, 100: false };
+  window.addEventListener('scroll', function() {
+    var scrollPercent = (window.scrollY + window.innerHeight) / document.body.scrollHeight * 100;
+    [25, 50, 75, 100].forEach(function(threshold) {
+      if (scrollPercent >= threshold && !scrollDepthHit[threshold]) {
+        scrollDepthHit[threshold] = true;
+        safeGtag('event', 'scroll_depth', { 'depth': threshold });
+      }
+    });
+  }, { passive: true });
+
+  // 6. 섹션 노출 트래킹 (핵심 섹션이 viewport에 들어왔을 때)
+  document.addEventListener('DOMContentLoaded', function() {
+    var sectionMap = {
+      '.conservative-block': 'conservative_growth',
+      '.pin-feature': 'site_strategy',
+      '.limit-block': 'limit_50',
+      '.inquiry-block': 'inquiry_form'
+    };
+    var seenSections = {};
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          for (var selector in sectionMap) {
+            if (entry.target.matches(selector) && !seenSections[selector]) {
+              seenSections[selector] = true;
+              safeGtag('event', 'section_view', { 'section': sectionMap[selector] });
+            }
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    Object.keys(sectionMap).forEach(function(selector) {
+      var el = document.querySelector(selector);
+      if (el) observer.observe(el);
+    });
+
+    // 7. UTM 파라미터 자동 캡처 → 폼 hidden 필드에 저장
+    var params = new URLSearchParams(window.location.search);
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function(key) {
+      var field = document.getElementById(key);
+      if (field) field.value = params.get(key) || '';
+    });
+    var refField = document.getElementById('referrer_field');
+    if (refField) refField.value = document.referrer || 'direct';
+    var landingField = document.getElementById('landing_page_field');
+    if (landingField) landingField.value = window.location.pathname;
+  });
+</script>
+
 </head>
 <body>
 
@@ -1434,8 +1582,8 @@ footer {
       <span class="brand-hanja">鐵山莊</span>
     </a>
     <div class="header-cta">
-      <a href="tel:0200000000" class="phone">02-0000-0000</a>
-      <a href="#inquiry" class="header-btn">가맹 신청 →</a>
+      <a href="tel:0200000000" class="phone" onclick="trackPhoneClick('header')">02-0000-0000</a>
+      <a href="#inquiry" class="header-btn" onclick="trackCTAClick('header')">가맹 신청 →</a>
     </div>
   </div>
 </header>
@@ -1464,8 +1612,8 @@ footer {
         </p>
 
         <div class="hero-cta">
-          <a href="#inquiry" class="btn-primary">가맹 자격 확인 →</a>
-          <a href="#brand" class="btn-secondary">브랜드 더 보기</a>
+          <a href="#inquiry" class="btn-primary" onclick="trackCTAClick('hero_primary')">가맹 자격 확인 →</a>
+          <a href="#brand" class="btn-secondary" onclick="trackCTAClick('hero_secondary')">브랜드 더 보기</a>
         </div>
       </div>
 
@@ -1976,25 +2124,38 @@ footer {
       서로의 시간을 아끼는 것이 가장 좋은 출발입니다.
     </p>
 
-    <div class="form-card">
+    <form
+      name="franchise-inquiry"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      action="/thank-you.html"
+      class="form-card"
+      onsubmit="trackLead(this)"
+    >
+      <input type="hidden" name="form-name" value="franchise-inquiry" />
+      <p hidden>
+        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+      </p>
+
       <div class="form-row">
         <div class="form-field">
           <label>이름</label>
-          <input type="text" placeholder="홍길동">
+          <input type="text" name="name" placeholder="홍길동" required onfocus="trackFormStart()">
         </div>
         <div class="form-field">
           <label>연락처</label>
-          <input type="tel" placeholder="010-0000-0000">
+          <input type="tel" name="phone" placeholder="010-0000-0000" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-field">
           <label>이메일</label>
-          <input type="email" placeholder="name@example.com">
+          <input type="email" name="email" placeholder="name@example.com" required>
         </div>
         <div class="form-field">
           <label>희망 출점 지역</label>
-          <select>
+          <select name="region">
             <option>서울</option>
             <option>경기</option>
             <option>인천</option>
@@ -2018,18 +2179,28 @@ footer {
       <div class="form-row">
         <div class="form-field full">
           <label>메시지 · 운영 경험</label>
-          <textarea placeholder="외식업·자영업 경험, 예상 출점 시기 등을 자유롭게 적어주세요."></textarea>
+          <textarea name="message" placeholder="외식업·자영업 경험, 예상 출점 시기 등을 자유롭게 적어주세요."></textarea>
         </div>
       </div>
+
+      <!-- UTM 파라미터 자동 캡처 (광고 트래킹) -->
+      <input type="hidden" name="utm_source" id="utm_source" />
+      <input type="hidden" name="utm_medium" id="utm_medium" />
+      <input type="hidden" name="utm_campaign" id="utm_campaign" />
+      <input type="hidden" name="utm_content" id="utm_content" />
+      <input type="hidden" name="utm_term" id="utm_term" />
+      <input type="hidden" name="referrer" id="referrer_field" />
+      <input type="hidden" name="landing_page" id="landing_page_field" />
+
       <div class="consent">
-        <input type="checkbox" id="consent">
+        <input type="checkbox" id="consent" required>
         <label for="consent" style="color:rgba(243,235,219,0.85);font-family:'Noto Serif KR',serif;font-size:0.88rem;letter-spacing:0;text-transform:none;margin-bottom:0;">개인정보 수집·이용에 동의합니다.</label>
       </div>
-      <button class="submit-btn">자격 검토 신청 →</button>
-    </div>
+      <button type="submit" class="submit-btn">자격 검토 신청 →</button>
+    </form>
 
     <p class="inquiry-direct">
-      직접 통화를 원하시면 <a href="tel:0200000000" class="phone">02-0000-0000</a>
+      직접 통화를 원하시면 <a href="tel:0200000000" class="phone" onclick="trackPhoneClick('inquiry_section')">02-0000-0000</a>
     </p>
   </div>
 </section>
