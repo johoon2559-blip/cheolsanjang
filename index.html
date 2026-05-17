@@ -413,6 +413,214 @@ section.block.dark .eyebrow { color: var(--gold); }
 }
 
 /* Reasons */
+
+/* Pin Feature — 거점 중심 (interlude) */
+.pin-feature {
+  padding: 110px 0;
+  background: var(--paper-deep);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.pin-feature::before {
+  content: '據';
+  position: absolute;
+  left: -40px; top: -50px;
+  font-size: clamp(18rem, 30vw, 28rem);
+  color: var(--brown);
+  opacity: 0.05;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+}
+
+.pin-feature .wrap { position: relative; z-index: 2; }
+
+.pin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.pin-image {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--ink);
+  position: relative;
+}
+.pin-image img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.pin-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(168,133,74,0.3);
+  pointer-events: none;
+}
+
+.pin-text .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.pin-text .eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 30px; height: 1px;
+  background: currentColor;
+}
+
+.pin-text h2 {
+  font-size: clamp(1.8rem, 3.8vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+
+.pin-text h2 .accent {
+  color: var(--brown);
+  font-style: italic;
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  font-weight: 500;
+}
+
+.pin-text p {
+  font-size: 1.05rem;
+  line-height: 1.95;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+}
+
+.pin-checklist {
+  list-style: none;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+.pin-checklist li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.pin-checklist li:last-child { margin-bottom: 0; }
+
+.pin-checklist li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--gold-deep);
+  font-weight: 700;
+}
+
+.pin-checklist li strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* Partner Cards — 철학 파트너 (in CRITERIA section) */
+.partner-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.partner-card {
+  border: 1px solid var(--line);
+  padding: 40px 36px;
+  background: rgba(243,235,219,0.4);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.partner-card:hover {
+  border-color: var(--brown);
+  background: rgba(243,235,219,0.7);
+}
+
+.partner-card .label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 18px;
+}
+
+.partner-card .label .hanja {
+  font-family: 'Noto Serif KR', serif;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--brown);
+  letter-spacing: 0.1em;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.partner-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  margin-bottom: 16px;
+}
+
+.partner-card h3::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--brown);
+  margin-top: 14px;
+}
+
+.partner-card p {
+  font-size: 0.98rem;
+  line-height: 1.85;
+  color: var(--ink-soft);
+}
+
+.partner-card p strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.criteria-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 56px;
+}
+
+.criteria-divider .line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.criteria-divider .label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--gold-deep);
+}
+
 .reasons-intro {
   font-size: 1.15rem; line-height: 1.95;
   color: var(--ink-soft);
@@ -1197,6 +1405,16 @@ footer {
   .commitment { padding: 32px 24px 28px; }
   .commitment h3 { font-size: 1.2rem; }
 
+  .pin-feature { padding: 70px 0; }
+  .pin-grid { grid-template-columns: 1fr; gap: 30px; }
+  .pin-image { aspect-ratio: 16/10; }
+  .pin-text h2 { font-size: 1.6rem; }
+
+  .partner-cards { grid-template-columns: 1fr; gap: 16px; margin-bottom: 44px; }
+  .partner-card { padding: 28px 22px; }
+  .partner-card h3 { font-size: 1.2rem; }
+  .criteria-divider { margin-bottom: 36px; }
+
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
 }
@@ -1351,6 +1569,29 @@ footer {
         <div class="commitment-num"><span class="hanja">肆</span>FOURTH COMMITMENT</div>
         <h3>빠른 확장보다<br>안정적인 운영을 선택합니다.</h3>
         <p>한 매장이 단단히 살아남는 구조가, 곧 <strong>50개가 살아남는 구조</strong>입니다. 1호점의 검증을 끝낸 뒤에야 2호점을 엽니다. 검증 없는 확장은 본사도 점주도 무너뜨립니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIN: 거점 중심 (interlude) -->
+<section class="pin-feature">
+  <div class="wrap">
+    <div class="pin-grid">
+      <div class="pin-image">
+        <img src="./exterior-day.jpg" alt="문래동 철산장 본점 외관">
+      </div>
+      <div class="pin-text">
+        <div class="eyebrow">STRATEGY · 거점 중심</div>
+        <h2>아무 자리나 <span class="accent">내지 않습니다.</span></h2>
+        <p>
+          브랜드가 살아남을 수 있는 핵심 상권부터 만듭니다. 입지의 구조가 받쳐주지 않으면, 본사가 먼저 거절합니다.
+        </p>
+        <ul class="pin-checklist">
+          <li><strong>동네 수요가 단단한가</strong> — 평일·주말 모두 받쳐주는 상주 인구</li>
+          <li><strong>점심 회전이 가능한가</strong> — 오피스·직장인 수요 검증</li>
+          <li><strong>저녁 체류 수요가 형성될 수 있는가</strong> — 객단가·체류시간 검증</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1580,8 +1821,31 @@ footer {
 <section class="block">
   <div class="wrap-narrow">
     <div class="section-head">
-      <div class="eyebrow">捌 · CRITERIA</div>
-      <h2>누구나 받지 <span class="accent">않습니다.</span></h2>
+      <div class="eyebrow">捌 · PARTNER</div>
+      <h2>철학이 맞는 파트너만 <span class="accent">선별합니다.</span></h2>
+    </div>
+
+    <div class="partner-cards">
+      <div class="partner-card">
+        <div class="label"><span class="hanja">壹</span>PARTNER · 파트너</div>
+        <h3>누구나 받지 않습니다.</h3>
+        <p>
+          브랜드의 기준과 방향성에 동의하고, <strong>실행할 수 있는 분만</strong> 함께합니다. 가맹은 본사의 선택이기도 하지만, 점주의 선택이기도 합니다. 양쪽이 맞아야 시작합니다.
+        </p>
+      </div>
+      <div class="partner-card">
+        <div class="label"><span class="hanja">貳</span>ALIGNMENT · 같은 방향</div>
+        <h3>계약보다 중요한 것은 철학입니다.</h3>
+        <p>
+          간절함은 말이 아니라 <strong>행동으로 증명</strong>됩니다. 한식의 시간을 같이 갈 분, 5년·10년을 함께 짓겠다는 분에게만 권합니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="criteria-divider">
+      <span class="line"></span>
+      <span class="label">CRITERIA · 자격 기준 4가지</span>
+      <span class="line"></span>
     </div>
 
     <p class="qual-intro">
