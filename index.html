@@ -892,6 +892,42 @@ section.block.dark .eyebrow { color: var(--gold); }
   letter-spacing: 0.1em;
 }
 
+/* On Air — 생활의 달인 영상 */
+.onair-block { background: var(--ink); color: var(--paper); padding-top: 0; }
+.onair-intro {
+  font-size: 1.1rem;
+  line-height: 1.95;
+  color: rgba(243,235,219,0.78);
+  max-width: 680px;
+  margin-bottom: 56px;
+}
+.onair-frame {
+  border: 1px solid rgba(168,133,74,0.3);
+  padding: 10px;
+  background: rgba(243,235,219,0.025);
+  position: relative;
+}
+.onair-frame::before, .onair-frame::after {
+  content: '';
+  position: absolute;
+  width: 12px; height: 12px;
+  border: 1px solid var(--gold);
+}
+.onair-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.onair-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.onair-ratio {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+.onair-ratio iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
 /* Limit */
 .limit-block {
   text-align: center;
@@ -1948,6 +1984,31 @@ footer {
         <div class="label">Flagship Monthly</div>
         <div class="value">1.8<span class="unit">억원</span></div>
         <div class="sub">2026 · MULLAE-DONG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ON AIR -->
+<section class="block dark onair-block">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">播 · ON AIR</div>
+      <h2>방송도,<br><span class="accent">같은 방식을 봤습니다.</span></h2>
+    </div>
+    <p class="onair-intro">
+      〈생활의 달인〉에 소개된 철산장. 방송용으로 따로 만든 것은 없습니다. 매일 매장에서 하는 그대로입니다.
+    </p>
+    <div class="onair-frame">
+      <div class="onair-ratio">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/cNLc9HaYKoo?rel=0"
+          title="철산장 — 생활의 달인 방송"
+          loading="lazy"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
       </div>
     </div>
   </div>
